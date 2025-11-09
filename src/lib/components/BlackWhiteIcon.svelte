@@ -39,4 +39,9 @@
 		);
 		transition-duration: var(--tw-duration, var(--default-transition-duration) /* 150ms */);
 	}
+
+	.black:hover,
+	.white:hover {
+		scale: 1.05;
+	}
 </style>

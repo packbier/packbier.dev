@@ -11,6 +11,7 @@
 	import { theme } from '$lib/theme.svelte';
 	// @ts-ignore
 	import GLOBE from 'vanta/dist/vanta.globe.min';
+	import { t } from '$lib/language.svelte';
 
 	let vantaEffect: any;
 
@@ -59,11 +60,8 @@
 
 <main id="page" class="max-w .switch flex min-h-screen flex-col duration-300">
 	<section id="hero" class="m-12 w-[50%]">
-		<h1 class="text-3xl font-bold text-black dark:text-white">Hi, I'm Martin Packbier</h1>
-		<Typewriter
-			strings={['Student', 'Developer', 'Open Source Enthusiast']}
-			class="text-2xl font-semibold text-black dark:text-white"
-		/>
+		<h1 class="text-3xl font-bold text-black dark:text-white">{t('title')}</h1>
+		<Typewriter strings={t('subtitle')} class="text-2xl font-semibold text-black dark:text-white" />
 
 		<div class="flex flex-row gap-5">
 			<SvgIcon
@@ -77,16 +75,12 @@
 	</section>
 
 	<section id="about" class="m-12 mt-0 w-[50%]">
-		<h3 class="text-xl font-semibold text-black dark:text-white">About Me</h3>
-		<p class="text-black dark:text-white">
-			I am a passionate software engineer with experience in building web applications using modern
-			technologies. I enjoy solving complex problems and continuously learning new skills to enhance
-			my craft.
-		</p>
+		<h3 class="text-xl font-semibold text-black dark:text-white">{t('about_me')}</h3>
+		<p class="text-black dark:text-white">{t('about_me_content')}</p>
 	</section>
 
 	<section id="experience" class="m-12 mt-0 w-[50%]">
-		<h3 class="text-xl font-semibold text-black dark:text-white">Experience</h3>
+		<h3 class="text-xl font-semibold text-black dark:text-white">{t('experience')}</h3>
 
 		<Expierence
 			company="University of Applied Sciences FH Aachen"
