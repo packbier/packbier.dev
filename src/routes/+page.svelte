@@ -134,7 +134,9 @@
 
 	<section id="footer" class="m-12 mt-0 w-[50%]">
 		<div class="flex flex-row items-center gap-20">
-			<p class="text-black dark:text-white">&copy; {year} Martin Packbier. All rights reserved.</p>
+			<p class="text-black dark:text-white">
+				&copy; {year} Martin Packbier. All rights reserved. Made with ❤️.
+			</p>
 			<LanguageSelector />
 			<ThemeSwitcher />
 		</div>

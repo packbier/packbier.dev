@@ -9,9 +9,9 @@
 <svelte:head>
 	<link rel="icon" href={favicon} />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
-	<meta name="description" content="Martin Packbier - Software Engineer Portfolio" />
+	<meta name="description" content="Martin Packbier" />
 	<meta name="author" content="Martin Packbier" />
-	<meta name="keywords" content="Martin Packbier, Software Engineer, Portfolio, Web Developer" />
+	<meta name="keywords" content="Martin Packbier, Personal Website" />
 	<meta name="theme-color" content="#ffffff" />
 	<title>Martin Packbier</title>
 
