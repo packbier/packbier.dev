@@ -67,9 +67,7 @@
 
 <main
 	id="page"
-	class="max-w switch transition-text flex min-h-screen flex-col text-black dark:text-white {black
-		? 'bg-black'
-		: 'bg-white'}"
+	class="max-w switch transition-text flex min-h-screen flex-col bg-white text-black dark:bg-black dark:text-white"
 >
 	<section id="header" class="mx-8 my-8 flex flex-col md:mx-12 md:flex-row">
 		<section id="hero" class="w-full md:w-[20%]">
