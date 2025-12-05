@@ -33,12 +33,12 @@
 
 	onMount(() => {
 		let options = {
-			el: '#page',
+			el: '#vanta-bg',
 			mouseControls: true,
 			touchControls: true,
 			gyroControls: true,
-			minHeight: 1000.0,
-			minWidth: 1000.0,
+			minHeight: 200.0,
+			minWidth: 200.0,
 			scale: 1.0,
 			scaleMobile: 1.0,
 			size: 0.5
@@ -65,11 +65,13 @@
 	let year = new Date().getFullYear();
 </script>
 
+<div id="vanta-bg" class="fixed inset-0 -z-10 bg-white dark:bg-black"></div>
+
 <main
 	id="page"
-	class="max-w switch transition-text flex min-h-screen flex-col bg-white text-black dark:bg-black dark:text-white"
+	class="switch transition-text flex min-h-screen flex-col text-black dark:text-white"
 >
-	<section id="header" class="mx-8 my-8 flex flex-col md:mx-12 md:flex-row">
+	<section id="header" class="mx-auto my-8 flex w-[90%] flex-col md:mx-12 md:w-auto md:flex-row">
 		<section id="hero" class="w-full md:w-[20%]">
 			<h1 class="transition-text text-3xl font-bold text-black dark:text-white">{t('title')}</h1>
 
@@ -95,12 +97,12 @@
 		</div>
 	</section>
 
-	<section id="about" class="mx-8 mb-8 w-[50%] md:mx-12">
+	<section id="about" class="mx-auto mb-8 w-[90%] md:mx-12 md:w-[50%]">
 		<h3 class="text-xl font-semibold text-black dark:text-white">{t('about_me')}</h3>
 		<p class="text-black dark:text-white">{t('about_me_content')}</p>
 	</section>
 
-	<section id="experience" class="mx-8 mb-8 w-[50%] md:mx-12">
+	<section id="experience" class="mx-auto mb-8 w-[90%] md:mx-12 md:w-[50%]">
 		<h3 class="text-xl font-semibold text-black dark:text-white">{t('experience')}</h3>
 
 		<Expierence
@@ -111,7 +113,7 @@
 		/>
 	</section>
 
-	<section id="education" class="mx-8 mb-8 w-[50%] md:mx-12">
+	<section id="education" class="mx-auto mb-8 w-[90%] md:mx-12 md:w-[50%]">
 		<h3 class="text-xl font-semibold text-black dark:text-white">{t('education')}</h3>
 
 		<Education
@@ -131,7 +133,7 @@
 		<Education name={t('edu_kae')} start="09/2014" end="06/2022" description={t('edu_kae_desc')} />
 	</section>
 
-	<section id="projects" class="mx-8 mb-8 w-[50%] md:mx-12">
+	<section id="projects" class="mx-auto mb-8 w-[90%] md:mx-12 md:w-[50%]">
 		<h3 class="text-xl font-semibold text-black dark:text-white">{t('projects')}</h3>
 
 		<div>
@@ -170,7 +172,7 @@
 		</div>
 	</section>
 
-	<section id="skills" class="mx-8 mb-8 w-[50%] md:mx-12">
+	<section id="skills" class="mx-auto mb-8 w-[90%] md:mx-12 md:w-[50%]">
 		<h3 class="text-xl font-semibold text-black dark:text-white">{t('skills')}</h3>
 		<ul class="flex list-disc flex-col pl-5 text-black dark:text-white">
 			<li>C++</li>
@@ -183,15 +185,17 @@
 		</ul>
 	</section>
 
-	<section id="contact" class="mx-8 mb-8 w-[50%] md:mx-12">
+	<section id="contact" class="mx-auto mb-8 w-[90%] md:mx-12 md:w-[50%]">
 		<h3 class="text-xl font-semibold text-black dark:text-white">{t('contact')}</h3>
 		<p class="text-black dark:text-white">{t('email_label')} packbier.martin@gmail.com</p>
 	</section>
 
-	<section id="footer" class="mx-8 mb-8 w-[50%] md:mx-12">
+	<section id="footer" class="mx-auto mb-8 w-[90%] md:mx-12 md:w-[50%]">
 		<div class="flex flex-row items-center gap-20">
 			<p class="text-black dark:text-white">
-				&copy; {year} Martin Packbier. {t('footer_rights')}
+				&copy; {year} Martin Packbier |
+				<a class="text-blue-600 hover:underline dark:text-blue-400" href="/credits">Credits</a>
+				| {t('footer_rights')}
 			</p>
 		</div>
 	</section>

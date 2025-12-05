@@ -11,16 +11,26 @@
 /* Enable dark mode variant */
 @variant dark (&:where(.dark, .dark *));
 
+html,
+body {
+	@apply text-black dark:text-white;
+	overflow-x: hidden;
+	/* Prevent horizontal scroll globally */
+}
+
 html {
-	overflow: scroll;
+	overflow-y: scroll;
 	scrollbar-color: rgb(119, 202, 240) transparent;
 	scrollbar-width: thin;
 
-	-ms-overflow-style: none; /* IE and Edge */
-    scrollbar-width: none; /* Firefox */
+	-ms-overflow-style: none;
+	/* IE and Edge */
+	scrollbar-width: none;
+	/* Firefox */
 
 	-webkit-scrollbar {
-    	display: none; /* Chrome, Safari and Opera */
+		display: none;
+		/* Chrome, Safari and Opera */
 	}
 }
 
