@@ -5,7 +5,7 @@
 	export let description: string;
 </script>
 
-<div>
+<div class="mb-6">
 	<h3 class="text-xl font-semibold text-black dark:text-white">{name}</h3>
 	<p class="text-black dark:text-white">
 		{start} - {end}

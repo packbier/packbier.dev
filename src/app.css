@@ -16,3 +16,9 @@ html {
 	scrollbar-color: rgb(119, 202, 240) transparent;
 	scrollbar-width: thin;
 }
+
+.transition-text {
+	transition-property: color;
+	transition-duration: 1000ms;
+	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
