@@ -5,15 +5,15 @@ export const theme = themeStore('light');
 function themeStore(initial: Theme) {
 	let initialTheme: Theme = initial;
 
-	// Initialize from localStorage on client side
+	// Initialize from localStorage on client side; light paper is default
 	if (typeof window !== 'undefined') {
-		const stored = localStorage.getItem('theme') as Theme | null;
-		if (stored === 'light' || stored === 'dark') {
-			initialTheme = stored;
-		} else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-			initialTheme = 'dark';
+		try {
+			if (localStorage.getItem('theme') === 'dark') {
+				initialTheme = 'dark';
+			}
+		} catch {
+			// Ignore storage access errors
 		}
-		// Apply theme immediately
 		applyTheme(initialTheme);
 	}
 
@@ -36,7 +36,11 @@ function themeStore(initial: Theme) {
 		set(newTheme: Theme) {
 			store = newTheme;
 			if (typeof window !== 'undefined') {
-				localStorage.setItem('theme', newTheme);
+				try {
+					localStorage.setItem('theme', newTheme);
+				} catch {
+					// Ignore storage access errors
+				}
 				applyTheme(newTheme);
 			}
 		},

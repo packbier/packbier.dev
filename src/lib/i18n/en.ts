@@ -1,61 +1,241 @@
 import type { TranslationMap } from '.';
 
 const en: TranslationMap = {
-	title: "Hi, I'm Martin Packbier",
-	subtitle: ['Student', 'Developer'],
-	about_me: 'About Me',
-	about_me_content:
-		'I am an M.Sc. Computer Science student at FH Aachen. I love everything software development and I am always eager to learn more about new technologies.',
-	experience: 'Experience',
-	education: 'Education',
-	edu_fh_aachen: 'University of Applied Sciences FH Aachen, Germany',
-	edu_fh_aachen_msc_desc: 'M.Sc. in Computer Science',
-	edu_fh_aachen_bsc_desc: 'B.Sc. in Computer Science',
-	edu_fh_aachen_bsc_grade: 'Grade: 1.8',
-	edu_fh_aachen_bsc_thesis_label: 'Thesis:',
-	edu_fh_aachen_bsc_thesis:
-		'"Analysis of Semantic Equivalence in the Transformation of SysML v1 to SysML v2 Models"',
-	edu_taipei: 'National Taipei University of Technology (Taipei Tech), Taiwan',
-	edu_taipei_desc: 'Exchange semester',
-	edu_kae: 'Königliches Athenäum Eupen, Belgium',
-	edu_kae_desc: 'Abitur with focus on Computer Science and Design',
-	exp_fh_aachen: 'University of Applied Sciences FH Aachen',
-	exp_fh_aachen_scora_role: 'Research Assistant – Software Developer',
-	exp_fh_aachen_scora_desc:
-		'Developed features for the Laravel web application SCORA (Smart Course Assistant), building AI-assisted tools and an upload pipeline to transform existing teaching materials into self-contained micro-modules.',
-	exp_fh_aachen_tutor_role: 'Student Teaching Assistant',
-	exp_fh_aachen_tutor_desc:
-		"Tutored students across 'Fundamentals of Computer Science and Introduction to Programming', 'Databases and Web Technologies', and 'Databases and Web Technologies 2'.",
-	exp_fh_aachen_tutor_details: [
-		'Guided students through lab exercises, debugging, and core programming and database concepts.',
-		'Reviewed and assessed submitted assignments for correctness, completeness, and code quality.',
-		'Provided individualized feedback and answered technical questions during practical sessions.'
+	site_meta_description:
+		'Martin Packbier — M.Sc. Computer Science student at FH Aachen building reliable software across web and backend systems.',
+	nav_sections: [
+		{ id: 'intro', num: '01', label: 'Intro' },
+		{ id: 'experience', num: '02', label: 'Experience' },
+		{ id: 'projects', num: '03', label: 'Projects & Research' },
+		{ id: 'education', num: '04', label: 'Education' },
+		{ id: 'skills-contact', num: '05', label: 'Skills & Contact' }
 	],
-	projects: 'Projects',
-	proj_ml_doc_title: 'ML-supported Document Processing',
-	proj_ml_doc_desc_1:
-		'Interdisciplinary project of my studies <i>(completed with grade 1.3)</i>, supervised by Michael Plagge (plagge.it)',
-	proj_ml_doc_desc_2:
-		'Developing a software solution for merging various invoices from print shops using Machine Learning and OCR technologies.',
-	my_tasks: 'My Tasks:',
-	proj_ml_doc_task_1:
-		"Implementation of a 'Human-in-the-Loop' process via a website to monitor OCR performance.",
-	proj_ml_doc_task_2:
-		'Quality assurance and validation of extracted data (date, supplier, print shop) to ensure integrity.',
-	proj_ml_doc_task_3:
-		'Manual exception handling for documents not clearly classified by the algorithm.',
-	goal_achievement: 'Goal Achievement:',
-	proj_ml_doc_goal: 'Provision of a clean database for calculating volume discounts.',
-	skills: 'Skills',
-	skill_cat_language: 'Language',
-	skill_cat_framework: 'Framework',
-	skill_cat_database: 'Database',
-	skill_cat_modeling: 'Modeling',
-	contact: 'Contact',
-	email_label: 'Email:',
 	blog: 'Blog',
-	privacy_policy: 'Privacy',
-	footer_rights: 'All rights reserved. Made with ❤️'
+	blog_aria: 'Open Blog at blog.packbier.dev',
+	grid_label: 'GRID',
+	theme_light: 'Light',
+	theme_dark: 'Dark',
+	back_home: 'Back to portfolio',
+	credits_label: 'Credits',
+	privacy_label: 'Privacy',
+	expand_hint: 'Select row to inspect',
+
+	section_intro_label: '01 / INTRO',
+	section_experience_label: '02 / EXPERIENCE',
+	section_projects_label: '03 / PROJECTS & RESEARCH',
+	section_education_label: '04 / EDUCATION',
+	section_skills_contact_label: '05 / SKILLS & CONTACT',
+
+	intro_heading: 'Hi, I’m Martin Packbier.',
+	intro_bio:
+		'I’m an M.Sc. Computer Science student at FH Aachen who enjoys building reliable software, exploring new technologies, and working across web and backend systems.',
+	intro_pills: ['M.SC. COMPUTER SCIENCE · FH AACHEN'],
+	intro_blog_cta: 'Read the Blog',
+	intro_contact_cta: 'Get in touch',
+
+	experience_items: [
+		{
+			id: 'exp-scora',
+			role: 'Research Assistant – Software Developer (SCORA)',
+			organization: 'FH Aachen',
+			location: 'Aachen, Germany',
+			period: '02/2026 – 08/2026',
+			badge: '[DEVELOPING]',
+			summary:
+				'Developed features for the Laravel web application SCORA (Smart Course Assistant), building AI-assisted tools and an upload pipeline to transform existing teaching materials into self-contained micro-modules based on lecturer feedback.',
+			bullets: [
+				'Worked across a PHP, Laravel, Filament, and Nginx stack, using Codex to accelerate feature implementation and iteration.'
+			],
+			tags: ['PHP', 'Laravel', 'Filament', 'Nginx', 'Codex', 'AI Integration']
+		},
+		{
+			id: 'exp-tutor-db',
+			role: 'Student Teaching Assistant – Databases & Web Technologies',
+			organization: 'FH Aachen',
+			location: 'Aachen, Germany',
+			period: '10/2024 – 01/2026 · 03/2026 – 06/2026',
+			badge: '[TUTOR]',
+			summary:
+				'Supervised 4 exercise groups in Winter term 2024/25, 6 groups in Winter term 2025/26 (~40 students each), and 6 groups in Summer term 2026 (30–40 students each) across Databases and Web Technologies 1 & 2.',
+			bullets: [
+				'Provided technical support during implementation and evaluated bi-weekly project milestones.',
+				'Conducted code reviews and taught best practices in database design, SQL optimization, and web development.'
+			],
+			tags: ['PHP', 'SQL', 'JavaScript', 'Web Development', 'Code Review']
+		},
+		{
+			id: 'exp-tutor-cs',
+			role: 'Student Teaching Assistant – Fundamentals of CS & Programming',
+			organization: 'FH Aachen',
+			location: 'Aachen, Germany',
+			period: '10/2023 – 01/2024',
+			badge: '[TUTOR]',
+			summary:
+				'Mentored an exercise group of 20 students in Fundamentals of Computer Science and Introduction to Programming.',
+			bullets: [
+				'Supported students in lab sessions with C++, OOP, and debugging techniques, and assessed weekly programming assignments.'
+			],
+			tags: ['C++', 'OOP', 'Code Review']
+		}
+	],
+
+	project_items: [
+		{
+			id: 'proj-sysml',
+			title: 'SysML v1 → SysML v2 Semantic Equivalence',
+			context: "Bachelor's Thesis",
+			location: 'FH Aachen',
+			period: '2026',
+			badge: '[RESEARCH]',
+			metaLabel: 'Thesis Title',
+			metaValue:
+				'"Analysis of Semantic Equivalence in the Transformation of SysML v1 to SysML v2 Models"',
+			summary:
+				'Conceptual Model-Based Systems Engineering (MBSE) research analyzing transformation rules and semantic preservation between SysML v1 and v2.',
+			bullets: [],
+			tags: ['SysML v1/v2', 'MBSE', 'Systems Engineering']
+		},
+		{
+			id: 'proj-ml-doc',
+			title: 'ML-supported Document Processing',
+			context: 'Interdisciplinary Project',
+			location: 'FH Aachen',
+			period: '2024 · Grade 1.3',
+			badge: '[ML / WEB]',
+			metaLabel: 'Supervised by',
+			metaValue: 'Michael Plagge (plagge.it)',
+			summary:
+				'Built an ML- and OCR-assisted invoice automation system for a purchasing cooperative of smaller print shops pooling their orders under shared contracts to earn bulk volume discounts from larger print suppliers.',
+			bullets: [
+				'Sorted incoming invoices into an automated processing pipeline by identifying creation date, supplier, delivery, and receiving print shop.',
+				'Built the Human-in-the-Loop web interface for exception handling—allowing operators to monitor OCR accuracy and manually review, correct, or reassign invoices whenever automated processing failed.',
+				'Provided a clean, reliable database to calculate collective volume discounts.'
+			],
+			tags: [
+				'Python',
+				'Tesseract OCR',
+				'Machine Learning',
+				'JavaScript',
+				'SQL',
+				'Human-in-the-Loop'
+			]
+		}
+	],
+
+	education_items: [
+		{
+			id: 'edu-msc',
+			institution: 'FH Aachen',
+			location: 'Aachen, Germany',
+			degree: 'M.Sc. in Computer Science',
+			period: '03/2026 – 07/2028',
+			exchangeBadge: '+ Exchange',
+			summary:
+				'Graduate program in Computer Science at FH Aachen, focusing on software engineering and modern web and backend systems.',
+			details: [{ label: 'Status', value: 'In Progress' }],
+			exchange: {
+				mainTabLabel: 'FH Aachen',
+				tabLabel: 'Exchange · Taipei Tech',
+				institution: 'National Taipei University of Technology (Taipei Tech)',
+				location: 'Taipei, Taiwan',
+				period: '09/2026 – 01/2027',
+				summary:
+					'Graduate exchange semester at Taipei Tech during the M.Sc. Computer Science program.',
+				details: [{ label: 'Program', value: 'M.Sc. Exchange' }]
+			}
+		},
+		{
+			id: 'edu-bsc',
+			institution: 'FH Aachen',
+			location: 'Aachen, Germany',
+			degree: 'B.Sc. in Computer Science',
+			period: '09/2022 – 02/2026',
+			grade: 'Grade: 1.8',
+			exchangeBadge: '+ Exchange',
+			details: [
+				{ label: 'Focus', value: 'Software Engineering' },
+				{
+					label: 'Thesis',
+					value:
+						'"Analysis of Semantic Equivalence in the Transformation of SysML v1 to SysML v2 Models"'
+				}
+			],
+			modulesLabel: 'Relevant Modules',
+			modules: [
+				'Model-Based Systems Engineering (MBSE)',
+				'Systems Safety Engineering',
+				'Modeling Distributed Systems',
+				'Databases & Web Technologies (1 & 2)',
+				'DevOps'
+			],
+			exchange: {
+				mainTabLabel: 'FH Aachen',
+				tabLabel: 'Exchange · Taipei Tech',
+				institution: 'National Taipei University of Technology (Taipei Tech)',
+				location: 'Taipei, Taiwan',
+				period: '02/2025 – 06/2025',
+				grade: 'GPA: 3.8/4.0',
+				modulesLabel: 'Modules',
+				modules: [
+					'Cloud & IoT Security',
+					'Analysis of Computer Algorithms',
+					'Data Science',
+					'Software Testing',
+					'Autonomous Mobile Robotics'
+				]
+			}
+		},
+		{
+			id: 'edu-kae',
+			institution: 'Königliches Athenäum Eupen',
+			location: 'Eupen, Belgium',
+			degree: 'Abitur',
+			period: '09/2016 – 06/2022',
+			grade: 'Grade: 73%',
+			details: [{ label: 'Focus', value: 'Computer Science and Design' }]
+		}
+	],
+
+	skills_heading: 'Skills & Languages',
+	skill_groups: [
+		{
+			category: 'Languages (Code)',
+			items: ['Java', 'C++', 'TypeScript', 'PHP', 'Python', 'SQL', 'JavaScript', 'Go']
+		},
+		{
+			category: 'Frameworks & Tech',
+			items: [
+				'Svelte',
+				'Laravel',
+				'Filament',
+				'Machine Learning',
+				'OCR',
+				'REST APIs',
+				'Web Development'
+			]
+		},
+		{
+			category: 'Methods & Tools',
+			items: [
+				'SysML v1/v2',
+				'MBSE',
+				'UML',
+				'Git',
+				'Nginx',
+				'DevOps',
+				'CI/CD',
+				'Software Testing',
+				'Agile'
+			]
+		},
+		{
+			category: 'Spoken Languages',
+			items: ['German (Native / C2)', 'English (Fluent / DAAD B2)', 'French (B2)']
+		}
+	],
+	contact_heading: 'Contact',
+	contact_email_label: 'Email',
+	contact_linkedin_label: 'LinkedIn'
 };
 
 export default en;

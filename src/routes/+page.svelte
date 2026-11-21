@@ -1,230 +1,388 @@
 <script lang="ts">
-	import Education from '$lib/components/Education.svelte';
-	import Expierence from '$lib/components/Expierence.svelte';
-	import LanguageSelector from '$lib/components/LanguageSelector.svelte';
-	import github from '$lib/assets/github.svg';
-	import linkedin from '$lib/assets/linkedin.svg';
-	import SvgIcon from '$lib/components/BlackWhiteIcon.svelte';
-	import Typewriter from '$lib/components/Typewriter.svelte';
-	import ThemeSwitcher from '$lib/components/ThemeSelector.svelte';
+	import { reveal } from '$lib/actions/reveal';
+	import AccordionRow from '$lib/components/AccordionRow.svelte';
+	import EducationPanel from '$lib/components/EducationPanel.svelte';
+	import IntroGeometry from '$lib/components/IntroGeometry.svelte';
+	import SectionRail from '$lib/components/SectionRail.svelte';
 	import { t } from '$lib/language.svelte';
-
-	type SkillCategoryKey =
-		'skill_cat_language' | 'skill_cat_framework' | 'skill_cat_database' | 'skill_cat_modeling';
-
-	let year = new Date().getFullYear();
-
-	const skills: { name: string; categoryKey: SkillCategoryKey }[] = [
-		{ name: 'C++', categoryKey: 'skill_cat_language' },
-		{ name: 'TypeScript', categoryKey: 'skill_cat_language' },
-		{ name: 'Svelte', categoryKey: 'skill_cat_framework' },
-		{ name: 'Java', categoryKey: 'skill_cat_language' },
-		{ name: 'PHP', categoryKey: 'skill_cat_language' },
-		{ name: 'Laravel', categoryKey: 'skill_cat_framework' },
-		{ name: 'SQL', categoryKey: 'skill_cat_database' },
-		{ name: 'SysML', categoryKey: 'skill_cat_modeling' }
-	];
 </script>
 
-<main
-	id="page"
-	class="switch transition-text flex min-h-screen flex-col text-black dark:text-white"
->
-	<section id="header" class="mx-auto my-8 flex w-[90%] flex-col md:mx-12 md:w-auto md:flex-row">
-		<section id="hero" class="w-full md:w-[20%]">
-			<h1 class="transition-text text-3xl font-bold text-black dark:text-white">{t('title')}</h1>
+<svelte:head>
+	<title>Martin Packbier — packbier.dev</title>
+	<meta name="description" content={t('site_meta_description')} />
+</svelte:head>
 
-			<Typewriter
-				strings={t('subtitle')}
-				class="text-2xl font-semibold text-black dark:text-white"
-			/>
+<SectionRail sections={t('nav_sections')} />
 
-			<div class="flex flex-row gap-5">
-				<SvgIcon
-					svgContent={linkedin}
-					altText="LinkedIn Icon"
-					linkUrl="https://www.linkedin.com/in/packbier/"
-				/>
+<main class="lg:pl-14">
+	<div class="mx-auto max-w-[1080px] px-5 sm:px-8 lg:px-12">
+		<!-- 01 / INTRO -->
+		<section id="intro" class="scroll-mt-20 py-14 sm:py-20 lg:py-24">
+			<p class="mb-6 font-mono text-[11px] tracking-[0.06em] text-[var(--ink-muted)] uppercase">
+				{t('section_intro_label')}
+			</p>
 
-				<SvgIcon svgContent={github} altText="GitHub Icon" linkUrl="https://github.com/packbier" />
+			<div class="grid grid-cols-1 items-start gap-x-4 gap-y-10 md:gap-x-6 lg:grid-cols-12">
+				<div class="space-y-6 lg:col-span-8">
+					<h1
+						class="text-3xl leading-[1.12] font-semibold tracking-[-0.025em] text-[var(--ink-primary)] sm:text-4xl lg:text-[2.75rem]"
+					>
+						{t('intro_heading')}
+					</h1>
+
+					<p
+						class="max-w-[58ch] text-[15px] leading-[1.7] text-[var(--ink-secondary)] sm:text-[16px]"
+					>
+						{t('intro_bio')}
+					</p>
+
+					<!-- Calm amber status pill -->
+					<div class="flex flex-wrap items-center gap-2.5 pt-1">
+						{#each t('intro_pills') as pill (pill)}
+							<span
+								class="inline-flex items-center gap-2 border border-[var(--accent-border)] bg-[var(--accent-soft-bg)] px-2.5 py-1 font-mono text-[11px] tracking-[0.05em] text-[var(--accent-ink)] uppercase"
+							>
+								<span aria-hidden="true" class="h-1.5 w-1.5 bg-[var(--accent)]"></span>
+								<span>{pill}</span>
+							</span>
+						{/each}
+					</div>
+
+					<!-- Subtle Blog & Contact CTAs -->
+					<div class="flex flex-wrap items-center gap-4 pt-2">
+						<a
+							href="https://blog.packbier.dev"
+							target="_blank"
+							rel="noopener noreferrer"
+							aria-label={t('blog_aria')}
+							class="inline-flex items-center gap-2 border border-[var(--rule-strong)] bg-[var(--bg-surface)]/50 px-4 py-2 font-mono text-[12px] tracking-[0.05em] text-[var(--ink-primary)] uppercase transition-colors duration-150 hover:border-[var(--accent-border)] hover:bg-[var(--accent-soft-bg)] hover:text-[var(--accent-ink)]"
+						>
+							<span>{t('intro_blog_cta')}</span>
+							<span aria-hidden="true">&#8599;</span>
+						</a>
+
+						<a
+							href="#skills-contact"
+							class="inline-flex items-center gap-1.5 px-1 py-2 font-mono text-[12px] tracking-[0.05em] text-[var(--ink-muted)] uppercase transition-colors duration-150 hover:text-[var(--accent-ink)]"
+						>
+							<span>{t('intro_contact_cta')}</span>
+							<span aria-hidden="true">&darr;</span>
+						</a>
+					</div>
+				</div>
+
+				<div class="lg:col-span-3 lg:col-start-10">
+					<IntroGeometry />
+				</div>
 			</div>
 		</section>
 
-		<div class="mt-4 flex flex-col items-start gap-5 md:mt-0 md:flex-row md:items-center md:p-6">
-			<LanguageSelector />
-			<ThemeSwitcher />
-			<a
-				href="https://blog.packbier.dev"
-				target="_blank"
-				rel="noopener noreferrer"
-				aria-label="Visit blog at blog.packbier.dev"
-				class="inline-flex items-center gap-1.5 rounded-full border border-black/20 bg-black/5 px-5 py-2.5 text-sm leading-5 font-medium text-black backdrop-blur-sm transition-all duration-300 hover:border-[#0046ff]/50 hover:bg-black/10 focus-visible:ring-2 focus-visible:ring-[#0046ff] focus-visible:ring-offset-2 focus-visible:outline-none dark:border-white/20 dark:bg-white/10 dark:text-white dark:hover:border-[#ba8cde]/60 dark:hover:bg-white/15 dark:focus-visible:ring-offset-black"
-			>
-				{t('blog')}
-				<span aria-hidden="true">&#8599;</span>
-			</a>
-		</div>
-	</section>
-
-	<section id="about" class="mx-auto mb-8 w-[90%] md:mx-12 md:w-[50%]">
-		<h3 class="text-xl font-semibold text-black dark:text-white">{t('about_me')}</h3>
-		<p class="text-black dark:text-white">{t('about_me_content')}</p>
-	</section>
-
-	<section id="experience" class="mx-auto mb-8 w-[90%] md:mx-12 md:w-[50%]">
-		<h3 class="text-xl font-semibold text-black dark:text-white">{t('experience')}</h3>
-
-		<Expierence
-			title={t('exp_fh_aachen_scora_role')}
-			company={t('exp_fh_aachen')}
-			start="02/2026"
-			end="08/2026"
-			description={t('exp_fh_aachen_scora_desc')}
-		/>
-
-		<Expierence
-			title={t('exp_fh_aachen_tutor_role')}
-			company={t('exp_fh_aachen')}
-			period="10/2023 - 01/2025 · 03/2026 - 06/2026"
-			description={t('exp_fh_aachen_tutor_desc')}
-			details={t('exp_fh_aachen_tutor_details')}
-		/>
-	</section>
-
-	<section id="education" class="mx-auto mb-8 w-[90%] md:mx-12 md:w-[50%]">
-		<h3 class="text-xl font-semibold text-black dark:text-white">{t('education')}</h3>
-
-		<Education
-			name={t('edu_fh_aachen')}
-			start="03/2026"
-			end="07/2028"
-			description={t('edu_fh_aachen_msc_desc')}
-			subEntries={[
-				{
-					name: t('edu_taipei'),
-					start: '09/2026',
-					end: '01/2027',
-					description: t('edu_taipei_desc')
-				}
-			]}
-		/>
-
-		<Education
-			name={t('edu_fh_aachen')}
-			start="09/2022"
-			end="02/2026"
-			description={t('edu_fh_aachen_bsc_desc')}
-			grade={t('edu_fh_aachen_bsc_grade')}
-			thesisLabel={t('edu_fh_aachen_bsc_thesis_label')}
-			thesis={t('edu_fh_aachen_bsc_thesis')}
-			subEntries={[
-				{
-					name: t('edu_taipei'),
-					start: '02/2025',
-					end: '07/2025',
-					description: t('edu_taipei_desc')
-				}
-			]}
-		/>
-
-		<Education name={t('edu_kae')} start="09/2014" end="06/2022" description={t('edu_kae_desc')} />
-	</section>
-
-	<section id="projects" class="mx-auto mb-8 w-[90%] md:mx-12 md:w-[50%]">
-		<h3 class="text-xl font-semibold text-black dark:text-white">{t('projects')}</h3>
-
-		<div>
-			<h4 class="text-lg font-semibold text-black dark:text-white">
-				{t('proj_ml_doc_title')}
-			</h4>
-
-			<ol class="flex flex-col gap-0.5">
-				<li>
-					{@html t('proj_ml_doc_desc_1')}
-				</li>
-
-				<li>
-					{t('proj_ml_doc_desc_2')}
-				</li>
-
-				<li><b>{t('my_tasks')}</b></li>
-
-				<li>
-					{t('proj_ml_doc_task_1')}
-				</li>
-
-				<li>
-					{t('proj_ml_doc_task_2')}
-				</li>
-
-				<li>
-					{t('proj_ml_doc_task_3')}
-				</li>
-
-				<li>
-					<b>{t('goal_achievement')}</b>
-					{t('proj_ml_doc_goal')}
-				</li>
-			</ol>
-		</div>
-	</section>
-
-	<section id="skills" class="mx-auto mb-8 w-[90%] md:mx-12 md:w-[50%]">
-		<h3 class="text-xl font-semibold text-black dark:text-white">{t('skills')}</h3>
-		<div class="mt-3 grid grid-cols-2 gap-3 sm:grid-cols-4">
-			{#each skills as skill (skill.name)}
-				<div
-					class="rounded-xl border border-black/15 bg-black/5 px-4 py-3 backdrop-blur-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-[#0046ff]/50 hover:bg-black/10 hover:shadow-md dark:border-white/15 dark:bg-white/10 dark:hover:border-[#ba8cde]/60 dark:hover:bg-white/15"
-				>
-					<div class="font-semibold text-black dark:text-white">{skill.name}</div>
-					<div class="text-xs text-black/60 dark:text-white/60">{t(skill.categoryKey)}</div>
+		<!-- 02 / EXPERIENCE -->
+		<section
+			id="experience"
+			use:reveal
+			class="scroll-mt-20 border-t border-[var(--rule)] py-12 sm:py-16"
+		>
+			<div class="grid grid-cols-1 gap-x-4 gap-y-6 md:gap-x-6 lg:grid-cols-12">
+				<div class="space-y-2 lg:col-span-3">
+					<h2
+						class="font-mono text-[12px] font-medium tracking-[0.06em] text-[var(--ink-primary)] uppercase"
+					>
+						{t('section_experience_label')}
+					</h2>
+					<p class="font-mono text-[10px] tracking-[0.05em] text-[var(--ink-muted)] uppercase">
+						{t('expand_hint')}
+					</p>
 				</div>
-			{/each}
-		</div>
-	</section>
 
-	<section id="contact" class="mx-auto mb-8 w-[90%] md:mx-12 md:w-[50%]">
-		<h3 class="text-xl font-semibold text-black dark:text-white">{t('contact')}</h3>
-		<p class="text-black dark:text-white">
-			{t('email_label')}
-			<a
-				href="mailto:packbier.martin@gmail.com"
-				class="text-blue-600 hover:underline dark:text-blue-400"
-			>
-				packbier.martin@gmail.com
-			</a>
-		</p>
-	</section>
+				<div class="border-t border-[var(--rule)] lg:col-span-9">
+					{#each t('experience_items') as item (item.id)}
+						<AccordionRow
+							id={item.id}
+							title={item.role}
+							organization={item.organization}
+							location={item.location}
+							period={item.period}
+							badge={item.badge}
+						>
+							<div class="space-y-3.5">
+								<p class="text-[15px] leading-[1.65] text-[var(--ink-primary)]">
+									{item.summary}
+								</p>
 
-	<section id="footer" class="mx-auto mb-8 w-[90%] md:mx-12 md:w-[50%]">
-		<div class="flex flex-row items-center gap-20">
-			<p class="text-black dark:text-white">
-				&copy; {year} Martin Packbier |
-				<a
-					class="text-blue-600 hover:underline dark:text-blue-400"
-					href="https://blog.packbier.dev"
-					target="_blank"
-					rel="noopener noreferrer">{t('blog')}</a
-				>
-				|
-				<a class="text-blue-600 hover:underline dark:text-blue-400" href="/credits/">Credits</a>
-				|
-				<a class="text-blue-600 hover:underline dark:text-blue-400" href="/privacy/"
-					>{t('privacy_policy')}</a
-				>
-				| {t('footer_rights')}
-			</p>
-		</div>
-	</section>
+								{#if item.bullets.length > 0}
+									<ul class="space-y-2">
+										{#each item.bullets as bullet (bullet)}
+											<li
+												class="flex items-start gap-2.5 text-[15px] leading-[1.6] text-[var(--ink-secondary)]"
+											>
+												<span
+													aria-hidden="true"
+													class="mt-[0.62em] h-1 w-1 shrink-0 bg-[var(--accent)]"
+												></span>
+												<span>{bullet}</span>
+											</li>
+										{/each}
+									</ul>
+								{/if}
+
+								{#if item.tags.length > 0}
+									<div class="flex flex-wrap gap-1.5 pt-1">
+										{#each item.tags as tag (tag)}
+											<span
+												class="border border-[var(--rule)] bg-[var(--bg-paper)] px-2 py-0.5 font-mono text-[11px] tracking-[0.04em] text-[var(--ink-secondary)]"
+											>
+												{tag}
+											</span>
+										{/each}
+									</div>
+								{/if}
+							</div>
+						</AccordionRow>
+					{/each}
+				</div>
+			</div>
+		</section>
+
+		<!-- 03 / PROJECTS & RESEARCH -->
+		<section
+			id="projects"
+			use:reveal
+			class="scroll-mt-20 border-t border-[var(--rule)] py-12 sm:py-16"
+		>
+			<div class="grid grid-cols-1 gap-x-4 gap-y-6 md:gap-x-6 lg:grid-cols-12">
+				<div class="space-y-2 lg:col-span-3">
+					<h2
+						class="font-mono text-[12px] font-medium tracking-[0.06em] text-[var(--ink-primary)] uppercase"
+					>
+						{t('section_projects_label')}
+					</h2>
+					<p class="font-mono text-[10px] tracking-[0.05em] text-[var(--ink-muted)] uppercase">
+						{t('expand_hint')}
+					</p>
+				</div>
+
+				<div class="border-t border-[var(--rule)] lg:col-span-9">
+					{#each t('project_items') as item (item.id)}
+						<AccordionRow
+							id={item.id}
+							title={item.title}
+							organization={item.context}
+							location={item.location}
+							period={item.period}
+							badge={item.badge}
+						>
+							<div class="space-y-3.5">
+								{#if item.metaLabel && item.metaValue}
+									<div
+										class="flex flex-wrap items-baseline gap-x-2.5 gap-y-1 border-b border-[var(--rule)] pb-2.5"
+									>
+										<span
+											class="font-mono text-[11px] tracking-[0.05em] text-[var(--ink-muted)] uppercase"
+										>
+											{item.metaLabel}:
+										</span>
+										<span class="text-[14px] font-medium text-[var(--ink-primary)]">
+											{item.metaValue}
+										</span>
+									</div>
+								{/if}
+
+								<p class="text-[15px] leading-[1.65] text-[var(--ink-primary)]">
+									{item.summary}
+								</p>
+
+								{#if item.bullets.length > 0}
+									<ul class="space-y-2">
+										{#each item.bullets as bullet (bullet)}
+											<li
+												class="flex items-start gap-2.5 text-[15px] leading-[1.6] text-[var(--ink-secondary)]"
+											>
+												<span
+													aria-hidden="true"
+													class="mt-[0.62em] h-1 w-1 shrink-0 bg-[var(--accent)]"
+												></span>
+												<span>{bullet}</span>
+											</li>
+										{/each}
+									</ul>
+								{/if}
+
+								{#if item.tags.length > 0}
+									<div class="flex flex-wrap gap-1.5 pt-1">
+										{#each item.tags as tag (tag)}
+											<span
+												class="border border-[var(--rule)] bg-[var(--bg-paper)] px-2 py-0.5 font-mono text-[11px] tracking-[0.04em] text-[var(--ink-secondary)]"
+											>
+												{tag}
+											</span>
+										{/each}
+									</div>
+								{/if}
+							</div>
+						</AccordionRow>
+					{/each}
+				</div>
+			</div>
+		</section>
+
+		<!-- 04 / EDUCATION -->
+		<section
+			id="education"
+			use:reveal
+			class="scroll-mt-20 border-t border-[var(--rule)] py-12 sm:py-16"
+		>
+			<div class="grid grid-cols-1 gap-x-4 gap-y-6 md:gap-x-6 lg:grid-cols-12">
+				<div class="space-y-2 lg:col-span-3">
+					<h2
+						class="font-mono text-[12px] font-medium tracking-[0.06em] text-[var(--ink-primary)] uppercase"
+					>
+						{t('section_education_label')}
+					</h2>
+					<p class="font-mono text-[10px] tracking-[0.05em] text-[var(--ink-muted)] uppercase">
+						{t('expand_hint')}
+					</p>
+				</div>
+
+				<div class="border-t border-[var(--rule)] lg:col-span-9">
+					{#each t('education_items') as item (item.id)}
+						<AccordionRow
+							id={item.id}
+							title={item.degree}
+							organization={item.institution}
+							location={item.location}
+							period={item.period}
+							secondaryMeta={item.grade}
+							badge={item.exchangeBadge}
+						>
+							<EducationPanel {item} />
+						</AccordionRow>
+					{/each}
+				</div>
+			</div>
+		</section>
+
+		<!-- 05 / SKILLS, LANGUAGES & CONTACT -->
+		<section
+			id="skills-contact"
+			use:reveal
+			class="scroll-mt-20 border-t border-[var(--rule)] py-12 sm:py-16"
+		>
+			<div class="grid grid-cols-1 gap-x-4 gap-y-6 md:gap-x-6 lg:grid-cols-12">
+				<div class="lg:col-span-3">
+					<h2
+						class="font-mono text-[12px] font-medium tracking-[0.06em] text-[var(--ink-primary)] uppercase"
+					>
+						{t('section_skills_contact_label')}
+					</h2>
+				</div>
+
+				<div class="space-y-10 lg:col-span-9">
+					<!-- Structured monospace skills index -->
+					<div class="space-y-3">
+						<h3 class="font-mono text-[11px] tracking-[0.06em] text-[var(--ink-muted)] uppercase">
+							{t('skills_heading')}
+						</h3>
+
+						<dl class="border-t border-[var(--rule)]">
+							{#each t('skill_groups') as group (group.category)}
+								<div
+									class="grid grid-cols-1 gap-y-1.5 border-b border-[var(--rule)] py-3.5 md:grid-cols-8 md:items-baseline md:gap-x-6 lg:grid-cols-9"
+								>
+									<dt
+										class="font-mono text-[11px] tracking-[0.05em] text-[var(--ink-muted)] uppercase md:col-span-3 lg:col-span-3"
+									>
+										{group.category}
+									</dt>
+									<dd
+										class="flex flex-wrap items-baseline gap-y-1 font-mono text-[13px] leading-relaxed text-[var(--ink-primary)] md:col-span-5 lg:col-span-6"
+									>
+										{#each group.items as entry, idx (entry)}
+											<span>{entry}</span>
+											{#if idx < group.items.length - 1}
+												<span aria-hidden="true" class="mx-2 text-[var(--rule-strong)]">/</span>
+											{/if}
+										{/each}
+									</dd>
+								</div>
+							{/each}
+						</dl>
+					</div>
+
+					<!-- Direct contact block -->
+					<div class="space-y-3">
+						<h3 class="font-mono text-[11px] tracking-[0.06em] text-[var(--ink-muted)] uppercase">
+							{t('contact_heading')}
+						</h3>
+
+						<div class="border-t border-[var(--rule)]">
+							<a
+								href="mailto:packbier.martin@gmail.com"
+								class="group relative grid grid-cols-4 items-center gap-x-4 gap-y-1 border-b border-[var(--rule)] py-3.5 md:grid-cols-8 md:gap-x-6 lg:grid-cols-9"
+							>
+								<span
+									aria-hidden="true"
+									class="pointer-events-none absolute -inset-x-2 inset-y-0 -z-10 transition-colors duration-150 group-hover:bg-[var(--bg-row-hover)] sm:-inset-x-3"
+								></span>
+								<span
+									aria-hidden="true"
+									class="pointer-events-none absolute top-0 bottom-0 -left-2 w-0.5 bg-[var(--accent)] opacity-0 transition-opacity duration-150 group-hover:opacity-100 sm:-left-3"
+								></span>
+
+								<span
+									class="col-span-3 font-mono text-[11px] tracking-[0.05em] text-[var(--ink-muted)] uppercase md:col-span-3 lg:col-span-3"
+								>
+									{t('contact_email_label')}
+								</span>
+								<span
+									class="col-span-4 font-mono text-[13px] text-[var(--ink-primary)] transition-colors group-hover:text-[var(--accent-ink)] sm:text-[14px] md:col-span-4 lg:col-span-5"
+								>
+									packbier.martin@gmail.com
+								</span>
+								<span
+									aria-hidden="true"
+									class="col-span-1 col-start-4 row-start-1 justify-self-end font-mono text-[12px] text-[var(--ink-muted)] transition-colors group-hover:text-[var(--accent-ink)] md:col-start-8 md:row-start-auto lg:col-start-9"
+								>
+									&#8599;
+								</span>
+							</a>
+
+							<a
+								href="https://linkedin.com/in/packbier"
+								target="_blank"
+								rel="noopener noreferrer"
+								class="group relative grid grid-cols-4 items-center gap-x-4 gap-y-1 border-b border-[var(--rule)] py-3.5 md:grid-cols-8 md:gap-x-6 lg:grid-cols-9"
+							>
+								<span
+									aria-hidden="true"
+									class="pointer-events-none absolute -inset-x-2 inset-y-0 -z-10 transition-colors duration-150 group-hover:bg-[var(--bg-row-hover)] sm:-inset-x-3"
+								></span>
+								<span
+									aria-hidden="true"
+									class="pointer-events-none absolute top-0 bottom-0 -left-2 w-0.5 bg-[var(--accent)] opacity-0 transition-opacity duration-150 group-hover:opacity-100 sm:-left-3"
+								></span>
+
+								<span
+									class="col-span-3 font-mono text-[11px] tracking-[0.05em] text-[var(--ink-muted)] uppercase md:col-span-3 lg:col-span-3"
+								>
+									{t('contact_linkedin_label')}
+								</span>
+								<span
+									class="col-span-4 font-mono text-[13px] text-[var(--ink-primary)] transition-colors group-hover:text-[var(--accent-ink)] sm:text-[14px] md:col-span-4 lg:col-span-5"
+								>
+									linkedin.com/in/packbier
+								</span>
+								<span
+									aria-hidden="true"
+									class="col-span-1 col-start-4 row-start-1 justify-self-end font-mono text-[12px] text-[var(--ink-muted)] transition-colors group-hover:text-[var(--accent-ink)] md:col-start-8 md:row-start-auto lg:col-start-9"
+								>
+									&#8599;
+								</span>
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+	</div>
 </main>
-
-<style>
-	.switch {
-		transition-property: color;
-		transition-duration: var(--tw-duration, var(--default-transition-duration) /* 150ms */);
-		transition-timing-function: var(
-			--tw-ease,
-			var(--default-transition-timing-function) /* cubic-bezier(0.4, 0, 0.2, 1) */
-		);
-	}
-</style>
