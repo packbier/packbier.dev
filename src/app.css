@@ -20,7 +20,7 @@
 	--accent-soft-bg: rgba(37, 99, 235, 0.09);
 	--accent-border: rgba(37, 99, 235, 0.36);
 	--grid-line: rgba(37, 99, 235, 0.1);
-	--grain-opacity: 1;
+	--grain-opacity: 0.12;
 	--grain-blend: multiply;
 }
 
@@ -39,8 +39,8 @@
 	--accent-soft-bg: rgba(96, 165, 250, 0.13);
 	--accent-border: rgba(96, 165, 250, 0.38);
 	--grid-line: rgba(96, 165, 250, 0.1);
-	--grain-opacity: 1;
-	--grain-blend: color-burn;
+	--grain-opacity: 0.25;
+	--grain-blend: soft-light;
 }
 
 @theme inline {
