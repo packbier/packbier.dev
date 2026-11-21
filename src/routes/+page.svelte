@@ -2,70 +2,29 @@
 	import Education from '$lib/components/Education.svelte';
 	import Expierence from '$lib/components/Expierence.svelte';
 	import LanguageSelector from '$lib/components/LanguageSelector.svelte';
-	import { onMount } from 'svelte';
 	import github from '$lib/assets/github.svg';
 	import linkedin from '$lib/assets/linkedin.svg';
 	import SvgIcon from '$lib/components/BlackWhiteIcon.svelte';
 	import Typewriter from '$lib/components/Typewriter.svelte';
 	import ThemeSwitcher from '$lib/components/ThemeSelector.svelte';
-	import { theme } from '$lib/theme.svelte';
-
-	// @ts-ignore
-	import GLOBE from 'vanta/dist/vanta.globe.min';
 	import { t } from '$lib/language.svelte';
-	import Project from '$lib/components/Project.svelte';
-	import ProjectListEntry from '$lib/components/ProjectListEntry.svelte';
-	import ProjectList from '$lib/components/ProjectList.svelte';
 
-	let vantaEffect: any;
-
-	let blackMode = {
-		color: 0x46ff,
-		color2: 0xba8cde,
-		backgroundColor: 0x000000
-	};
-
-	let whiteMode = {
-		color: 0x46ff,
-		color2: 0xba8cde,
-		backgroundColor: 0xffffff
-	};
-
-	onMount(() => {
-		let options = {
-			el: '#vanta-bg',
-			mouseControls: true,
-			touchControls: true,
-			gyroControls: true,
-			minHeight: 200.0,
-			minWidth: 200.0,
-			scale: 1.0,
-			scaleMobile: 1.0,
-			size: 0.5
-		};
-
-		theme.get === 'dark'
-			? (vantaEffect = GLOBE({
-					...options,
-					...blackMode
-				}))
-			: (vantaEffect = GLOBE({
-					...options,
-					...whiteMode
-				}));
-	});
-
-	$effect(() => {
-		theme.get === 'dark' ? vantaEffect.setOptions(blackMode) : vantaEffect.setOptions(whiteMode);
-	});
-
-	let black = $derived(theme.get === 'dark');
-	let white = $derived(theme.get === 'light');
+	type SkillCategoryKey =
+		'skill_cat_language' | 'skill_cat_framework' | 'skill_cat_database' | 'skill_cat_modeling';
 
 	let year = new Date().getFullYear();
-</script>
 
-<div id="vanta-bg" class="fixed inset-0 -z-10 bg-white dark:bg-black"></div>
+	const skills: { name: string; categoryKey: SkillCategoryKey }[] = [
+		{ name: 'C++', categoryKey: 'skill_cat_language' },
+		{ name: 'TypeScript', categoryKey: 'skill_cat_language' },
+		{ name: 'Svelte', categoryKey: 'skill_cat_framework' },
+		{ name: 'Java', categoryKey: 'skill_cat_language' },
+		{ name: 'PHP', categoryKey: 'skill_cat_language' },
+		{ name: 'Laravel', categoryKey: 'skill_cat_framework' },
+		{ name: 'SQL', categoryKey: 'skill_cat_database' },
+		{ name: 'SysML', categoryKey: 'skill_cat_modeling' }
+	];
+</script>
 
 <main
 	id="page"
@@ -84,7 +43,7 @@
 				<SvgIcon
 					svgContent={linkedin}
 					altText="LinkedIn Icon"
-					linkUrl="https://www.linkedin.com/in/martin-packbier-4656bb239/"
+					linkUrl="https://www.linkedin.com/in/packbier/"
 				/>
 
 				<SvgIcon svgContent={github} altText="GitHub Icon" linkUrl="https://github.com/packbier" />
@@ -106,10 +65,19 @@
 		<h3 class="text-xl font-semibold text-black dark:text-white">{t('experience')}</h3>
 
 		<Expierence
+			title={t('exp_fh_aachen_scora_role')}
 			company={t('exp_fh_aachen')}
-			start="09/2023"
-			end="01/2025"
-			description={t('exp_fh_aachen_desc')}
+			start="02/2026"
+			end="08/2026"
+			description={t('exp_fh_aachen_scora_desc')}
+		/>
+
+		<Expierence
+			title={t('exp_fh_aachen_tutor_role')}
+			company={t('exp_fh_aachen')}
+			period="10/2023 - 01/2025 · 03/2026 - 06/2026"
+			description={t('exp_fh_aachen_tutor_desc')}
+			details={t('exp_fh_aachen_tutor_details')}
 		/>
 	</section>
 
@@ -118,16 +86,35 @@
 
 		<Education
 			name={t('edu_fh_aachen')}
-			start="09/2022"
-			end="02/2026"
-			description={t('edu_fh_aachen_desc')}
+			start="03/2026"
+			end="07/2028"
+			description={t('edu_fh_aachen_msc_desc')}
+			subEntries={[
+				{
+					name: t('edu_taipei'),
+					start: '09/2026',
+					end: '01/2027',
+					description: t('edu_taipei_desc')
+				}
+			]}
 		/>
 
 		<Education
-			name={t('edu_taipei')}
-			start="02/2025"
-			end="07/2025"
-			description={t('edu_taipei_desc')}
+			name={t('edu_fh_aachen')}
+			start="09/2022"
+			end="02/2026"
+			description={t('edu_fh_aachen_bsc_desc')}
+			grade={t('edu_fh_aachen_bsc_grade')}
+			thesisLabel={t('edu_fh_aachen_bsc_thesis_label')}
+			thesis={t('edu_fh_aachen_bsc_thesis')}
+			subEntries={[
+				{
+					name: t('edu_taipei'),
+					start: '02/2025',
+					end: '07/2025',
+					description: t('edu_taipei_desc')
+				}
+			]}
 		/>
 
 		<Education name={t('edu_kae')} start="09/2014" end="06/2022" description={t('edu_kae_desc')} />
@@ -174,27 +161,36 @@
 
 	<section id="skills" class="mx-auto mb-8 w-[90%] md:mx-12 md:w-[50%]">
 		<h3 class="text-xl font-semibold text-black dark:text-white">{t('skills')}</h3>
-		<ul class="flex list-disc flex-col pl-5 text-black dark:text-white">
-			<li>C++</li>
-			<li>TypeScript</li>
-			<li>Svelte</li>
-			<li>Java</li>
-			<li>PHP</li>
-			<li>SQL</li>
-			<li>SysML</li>
-		</ul>
+		<div class="mt-3 grid grid-cols-2 gap-3 sm:grid-cols-4">
+			{#each skills as skill (skill.name)}
+				<div
+					class="rounded-xl border border-black/15 bg-black/5 px-4 py-3 backdrop-blur-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-[#0046ff]/50 hover:bg-black/10 hover:shadow-md dark:border-white/15 dark:bg-white/10 dark:hover:border-[#ba8cde]/60 dark:hover:bg-white/15"
+				>
+					<div class="font-semibold text-black dark:text-white">{skill.name}</div>
+					<div class="text-xs text-black/60 dark:text-white/60">{t(skill.categoryKey)}</div>
+				</div>
+			{/each}
+		</div>
 	</section>
 
 	<section id="contact" class="mx-auto mb-8 w-[90%] md:mx-12 md:w-[50%]">
 		<h3 class="text-xl font-semibold text-black dark:text-white">{t('contact')}</h3>
-		<p class="text-black dark:text-white">{t('email_label')} packbier.martin@gmail.com</p>
+		<p class="text-black dark:text-white">
+			{t('email_label')}
+			<a
+				href="mailto:packbier.martin@gmail.com"
+				class="text-blue-600 hover:underline dark:text-blue-400"
+			>
+				packbier.martin@gmail.com
+			</a>
+		</p>
 	</section>
 
 	<section id="footer" class="mx-auto mb-8 w-[90%] md:mx-12 md:w-[50%]">
 		<div class="flex flex-row items-center gap-20">
 			<p class="text-black dark:text-white">
 				&copy; {year} Martin Packbier |
-				<a class="text-blue-600 hover:underline dark:text-blue-400" href="/credits">Credits</a>
+				<a class="text-blue-600 hover:underline dark:text-blue-400" href="/credits/">Credits</a>
 				| {t('footer_rights')}
 			</p>
 		</div>

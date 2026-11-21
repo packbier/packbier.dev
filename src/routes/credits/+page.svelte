@@ -1,6 +1,17 @@
-<main class="min-h-screen p-8 font-sans text-black md:p-12 dark:text-white">
+<script lang="ts">
+	import ThemeSwitcher from '$lib/components/ThemeSelector.svelte';
+</script>
+
+<svelte:head>
+	<title>Credits | Martin Packbier</title>
+</svelte:head>
+
+<main class="transition-text min-h-screen p-8 font-sans text-black md:p-12 dark:text-white">
 	<div class="mx-auto max-w-2xl">
-		<h1 class="mb-12 text-4xl font-bold">Credits</h1>
+		<div class="mb-12 flex flex-wrap items-center justify-between gap-4">
+			<h1 class="text-4xl font-bold">Credits</h1>
+			<ThemeSwitcher />
+		</div>
 
 		<div class="space-y-10">
 			<section>
@@ -63,7 +74,15 @@
 
 			<section>
 				<h2 class="mb-4 text-2xl font-semibold">Hosting</h2>
-				<ul class="list-disc pl-5">
+				<ul class="list-disc space-y-2 pl-5">
+					<li>
+						<a
+							href="https://pages.cloudflare.com/"
+							target="_blank"
+							rel="noopener noreferrer"
+							class="text-blue-600 hover:underline dark:text-blue-400">Cloudflare Pages</a
+						>
+					</li>
 					<li>
 						<a
 							href="https://pages.github.com/"

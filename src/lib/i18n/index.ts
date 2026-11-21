@@ -1,5 +1,44 @@
-import type { Language } from "$lib/language.svelte";
+export interface TranslationMap {
+	title: string;
+	subtitle: string[];
+	about_me: string;
+	about_me_content: string;
+	experience: string;
+	education: string;
+	edu_fh_aachen: string;
+	edu_fh_aachen_msc_desc: string;
+	edu_fh_aachen_bsc_desc: string;
+	edu_fh_aachen_bsc_grade: string;
+	edu_fh_aachen_bsc_thesis_label: string;
+	edu_fh_aachen_bsc_thesis: string;
+	edu_taipei: string;
+	edu_taipei_desc: string;
+	edu_kae: string;
+	edu_kae_desc: string;
+	exp_fh_aachen: string;
+	exp_fh_aachen_scora_role: string;
+	exp_fh_aachen_scora_desc: string;
+	exp_fh_aachen_tutor_role: string;
+	exp_fh_aachen_tutor_desc: string;
+	exp_fh_aachen_tutor_details: string[];
+	projects: string;
+	proj_ml_doc_title: string;
+	proj_ml_doc_desc_1: string;
+	proj_ml_doc_desc_2: string;
+	my_tasks: string;
+	proj_ml_doc_task_1: string;
+	proj_ml_doc_task_2: string;
+	proj_ml_doc_task_3: string;
+	goal_achievement: string;
+	proj_ml_doc_goal: string;
+	skills: string;
+	skill_cat_language: string;
+	skill_cat_framework: string;
+	skill_cat_database: string;
+	skill_cat_modeling: string;
+	contact: string;
+	email_label: string;
+	footer_rights: string;
+}
 
-export type Keys = 'title';
-export type TranslationMap = Record<string, any>;
-
+export type TranslationKey = keyof TranslationMap;
