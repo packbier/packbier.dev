@@ -1,0 +1,8 @@
+{
+	"name": "packbier-dev",
+	"compatibility_date": "2026-11-19",
+	"assets": {
+		"directory": "./build",
+		"not_found_handling": "404-page"
+	}
+}

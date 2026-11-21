@@ -3,19 +3,21 @@ export type Theme = 'light' | 'dark';
 export const theme = themeStore('light');
 
 function themeStore(initial: Theme) {
-	let store = $state<Theme>(initial);
+	let initialTheme: Theme = initial;
 
 	// Initialize from localStorage on client side
 	if (typeof window !== 'undefined') {
 		const stored = localStorage.getItem('theme') as Theme | null;
 		if (stored === 'light' || stored === 'dark') {
-			store = stored;
+			initialTheme = stored;
 		} else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-			store = 'dark';
+			initialTheme = 'dark';
 		}
 		// Apply theme immediately
-		applyTheme(store);
+		applyTheme(initialTheme);
 	}
+
+	let store = $state<Theme>(initialTheme);
 
 	function applyTheme(newTheme: Theme) {
 		if (typeof document !== 'undefined') {
