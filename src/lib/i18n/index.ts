@@ -38,6 +38,8 @@ export interface TranslationMap {
 	skill_cat_modeling: string;
 	contact: string;
 	email_label: string;
+	blog: string;
+	privacy_policy: string;
 	footer_rights: string;
 }
 

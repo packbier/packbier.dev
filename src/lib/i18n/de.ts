@@ -54,6 +54,8 @@ const de: TranslationMap = {
 	skill_cat_modeling: 'Modellierung',
 	contact: 'Kontakt',
 	email_label: 'E-Mail:',
+	blog: 'Blog',
+	privacy_policy: 'Datenschutz',
 	footer_rights: 'All rights reserved. Made with ❤️'
 };
 

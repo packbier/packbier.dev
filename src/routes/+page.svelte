@@ -53,6 +53,16 @@
 		<div class="mt-4 flex flex-col items-start gap-5 md:mt-0 md:flex-row md:items-center md:p-6">
 			<LanguageSelector />
 			<ThemeSwitcher />
+			<a
+				href="https://blog.packbier.dev"
+				target="_blank"
+				rel="noopener noreferrer"
+				aria-label="Visit blog at blog.packbier.dev"
+				class="inline-flex items-center gap-1.5 rounded-full border border-black/20 bg-black/5 px-5 py-2.5 text-sm leading-5 font-medium text-black backdrop-blur-sm transition-all duration-300 hover:border-[#0046ff]/50 hover:bg-black/10 focus-visible:ring-2 focus-visible:ring-[#0046ff] focus-visible:ring-offset-2 focus-visible:outline-none dark:border-white/20 dark:bg-white/10 dark:text-white dark:hover:border-[#ba8cde]/60 dark:hover:bg-white/15 dark:focus-visible:ring-offset-black"
+			>
+				{t('blog')}
+				<span aria-hidden="true">&#8599;</span>
+			</a>
 		</div>
 	</section>
 
@@ -190,7 +200,18 @@
 		<div class="flex flex-row items-center gap-20">
 			<p class="text-black dark:text-white">
 				&copy; {year} Martin Packbier |
+				<a
+					class="text-blue-600 hover:underline dark:text-blue-400"
+					href="https://blog.packbier.dev"
+					target="_blank"
+					rel="noopener noreferrer">{t('blog')}</a
+				>
+				|
 				<a class="text-blue-600 hover:underline dark:text-blue-400" href="/credits/">Credits</a>
+				|
+				<a class="text-blue-600 hover:underline dark:text-blue-400" href="/privacy/"
+					>{t('privacy_policy')}</a
+				>
 				| {t('footer_rights')}
 			</p>
 		</div>

@@ -53,6 +53,8 @@ const en: TranslationMap = {
 	skill_cat_modeling: 'Modeling',
 	contact: 'Contact',
 	email_label: 'Email:',
+	blog: 'Blog',
+	privacy_policy: 'Privacy',
 	footer_rights: 'All rights reserved. Made with ❤️'
 };
 
