@@ -129,20 +129,9 @@ const en: TranslationMap = {
 			location: 'Aachen, Germany',
 			degree: 'M.Sc. in Computer Science',
 			period: '03/2026 – 07/2028',
-			exchangeBadge: '+ Exchange',
 			summary:
 				'Graduate program in Computer Science at FH Aachen, focusing on software engineering and modern web and backend systems.',
-			details: [{ label: 'Status', value: 'In Progress' }],
-			exchange: {
-				mainTabLabel: 'FH Aachen',
-				tabLabel: 'Exchange · Taipei Tech',
-				institution: 'National Taipei University of Technology (Taipei Tech)',
-				location: 'Taipei, Taiwan',
-				period: '09/2026 – 01/2027',
-				summary:
-					'Graduate exchange semester at Taipei Tech during the M.Sc. Computer Science program.',
-				details: [{ label: 'Program', value: 'M.Sc. Exchange' }]
-			}
+			details: [{ label: 'Status', value: 'In Progress' }]
 		},
 		{
 			id: 'edu-bsc',

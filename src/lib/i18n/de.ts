@@ -129,20 +129,9 @@ const de: TranslationMap = {
 			location: 'Aachen, Deutschland',
 			degree: 'M.Sc. in Informatik',
 			period: '03/2026 – 07/2028',
-			exchangeBadge: '+ Auslandssemester',
 			summary:
 				'Masterstudium der Informatik an der FH Aachen mit Fokus auf Software Engineering sowie moderne Web- und Backend-Systeme.',
-			details: [{ label: 'Status', value: 'Laufend' }],
-			exchange: {
-				mainTabLabel: 'FH Aachen',
-				tabLabel: 'Ausland · Taipei Tech',
-				institution: 'National Taipei University of Technology (Taipei Tech)',
-				location: 'Taipeh, Taiwan',
-				period: '09/2026 – 01/2027',
-				summary:
-					'Master-Auslandssemester an der Taipei Tech im Rahmen des M.Sc.-Informatikstudiums.',
-				details: [{ label: 'Programm', value: 'M.Sc. Austausch' }]
-			}
+			details: [{ label: 'Status', value: 'Laufend' }]
 		},
 		{
 			id: 'edu-bsc',
